@@ -1,0 +1,107 @@
+.user-infos {
+  width: 100%;
+  height: 100vh;
+  background-color: #456939;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    width: 75%;
+    // height: 75%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-bottom: 15px;
+
+    p {
+      font-size: 10px;
+    }
+  }
+
+  &__fields {
+    width: 49%;
+    padding: 7px 0;
+
+    p {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 2px 5px;
+      border-radius: 5px;
+      border: 1.2px solid #B2B7B2;
+      font-size: 12px;
+    }
+
+    input:focus {
+      outline-color: #6F9265;
+      font-weight: bold;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__delete-button {
+    background: #E05757;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    width: 16px;
+    height: 18px;
+    cursor: pointer;
+    position: relative;
+
+    &:active {
+      top: 2px;
+    }
+  }
+
+  &__send-button {
+    width: 49%;
+    padding: 5px;
+    border: none;
+    color: white;
+    background: linear-gradient(279deg, rgb(32 62 27 / 86%) 4%, rgb(69, 105, 57) 35%, rgb(111, 146, 101) 74%);
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    position: relative;
+
+    &:active {
+      top: 3px;
+    }
+
+    &--update {
+      background: linear-gradient(279deg, rgb(210 164 54 / 86%) 4%, rgb(211, 155, 82) 35%, rgb(205, 165, 125) 74%);
+    }
+
+    &--create {
+      background: linear-gradient(279deg, rgb(77 171 60 / 86%) 4%, rgb(92, 158, 70) 35%, rgb(131, 176, 118) 74%);
+    }
+
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

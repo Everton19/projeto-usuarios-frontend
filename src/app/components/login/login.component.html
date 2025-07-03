@@ -1,0 +1,35 @@
+<div class="login">
+  <div class="login__container">
+    <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="login__title">
+        <h1 class="poppins-semibold">Seja bem-vindo</h1>
+        <p class="poppins-light">Por favor, faça login para continuar.</p>
+      </div>
+      <div class="login__fields">
+        <p class="poppins-regular">Usuário:</p>
+        <input class="poppins-regular" placeholder="Digite o seu usuário" formControlName="username">
+      </div>
+      <div class="login__fields">
+        <p class="poppins-regular">Senha:</p>
+        <input class="poppins-regular" placeholder="Digite a sua senha" formControlName="password">
+      </div>
+
+      <div class="login__alert-message">
+        @if (loginForm.invalid) {
+          @if (loginForm.hasError('invalidCredentials')) {
+            <p class="poppins-semibold">Usuário ou senha inválidos.</p>
+          }
+
+          @if (loginForm.hasError('generalCredentialsError')) {
+            <p class="poppins-semibold">Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.</p>
+          }
+        }
+      </div>
+
+      <button class="poppins-regular login__button">
+        Entrar
+      </button>
+
+    </form>
+  </div>
+</div>
