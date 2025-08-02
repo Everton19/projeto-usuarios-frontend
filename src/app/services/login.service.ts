@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,12 @@ export class LoginService {
     return this._httpClient.post<{ token: string }>(this._loginUrl + 'login', {
       username: username,
       password: password
-    });
+    }).pipe(
+      map((tokenResponse) => {
+        localStorage.setItem('token', tokenResponse.token);
+
+        return tokenResponse;
+      }),
+    );
   }
 }
