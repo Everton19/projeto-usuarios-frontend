@@ -41,22 +41,36 @@
 
       <div class="user-infos__alert-message">
         @if (userInfosForm.invalid) {
-          @if (userInfosForm.hasError('update-success')) {
-            <p class="poppins-semibold user-infos__alert-message--success">Atualizações realizadas com sucesso.</p>
-          }
+        @if (userInfosForm.hasError('update-success')) {
+        <p class="poppins-semibold user-infos__alert-message--success">Atualizações realizadas com sucesso.</p>
+        }
 
-          @if (userInfosForm.hasError('update-error')) {
-            <p class="poppins-semibold user-infos__alert-message--error">Erro ao atualizar usuário. Tente novamente.</p>
-          }
+        @if (userInfosForm.hasError('update-error')) {
+        <p class="poppins-semibold user-infos__alert-message--error">Erro ao atualizar usuário. Tente novamente.</p>
+        }
+
+        @if (userInfosForm.hasError('create-success')) {
+        <p class="poppins-semibold user-infos__alert-message--success">Usuário criado com sucesso.</p>
+        }
+
+        @if (userInfosForm.hasError('existing-error')) {
+        <p class="poppins-semibold user-infos__alert-message--error">Usuário já cadastrado.</p>
+        }
+
+        @if (userInfosForm.hasError('create-error')) {
+        <p class="poppins-semibold user-infos__alert-message--error">Erro ao criar usuário. Tente novamente.</p>
+        }
         }
       </div>
 
       <div class="user-infos__buttons-container">
-        <button type="button" class="poppins-regular user-infos__send-button user-infos__send-button--create">
+        <button type="button" class="poppins-regular user-infos__send-button user-infos__send-button--create"
+          (click)="createUser()">
           Criar Usuário
         </button>
 
-        <button type="button" class="poppins-regular user-infos__send-button user-infos__send-button--update" (click)="updateUser()">
+        <button type="button" class="poppins-regular user-infos__send-button user-infos__send-button--update"
+          (click)="updateUser()">
           Atualizar Usuário
         </button>
       </div>
