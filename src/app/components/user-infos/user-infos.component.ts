@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UpdateUserService } from '../../services/update-user.service';
 import { CreateUserService } from '../../services/create-user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IUserRequest } from '../../interfaces/user-request.interface';
 
 @Component({
   selector: 'app-user-infos',
@@ -22,7 +23,7 @@ export class UserInfosComponent {
   });
 
   createUser() {
-    this._createUserService.create(this.userInfosForm.value as any).subscribe({
+    this._createUserService.create(this.userInfosForm.value as IUserRequest).subscribe({
       next: () => {
         this.userInfosForm.setErrors({ 'create-success': true });
       },
@@ -39,7 +40,7 @@ export class UserInfosComponent {
   }
 
   updateUser() {
-    this._updateUserService.update(this.userInfosForm.value as any).subscribe({
+    this._updateUserService.update(this.userInfosForm.value as IUserRequest).subscribe({
       next: () => {
         this.userInfosForm.setErrors({ 'update-success': true });
       },
