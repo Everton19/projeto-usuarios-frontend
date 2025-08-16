@@ -4,8 +4,13 @@ import { Observable } from 'rxjs';
 export function authInterceptor(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
-):Observable<HttpEvent<unknown>> {
+): Observable<HttpEvent<unknown>> {
 
-  console.log('Request intercepted:', req);
-  return next(req);
+  const NEW_REQUEST = req.clone({
+    headers: req.headers.set(
+      'authorization',
+      'Bearer ' + localStorage.getItem('token')
+    ),
+  });
+  return next(NEW_REQUEST);
 }

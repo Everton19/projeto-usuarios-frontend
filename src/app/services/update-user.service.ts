@@ -11,10 +11,8 @@ export class UpdateUserService {
   private readonly _httpClient = inject(HttpClient);
   private readonly _url = 'http://localhost:3000/update-user';
 
-  update(userData: IUserRequest){
-    const headers = new HttpHeaders().set('authorization', 'Bearer ' + localStorage.getItem('token'));
-
-    return this._httpClient.put<IUpdateUserResponse>(`${this._url}`, userData, { headers }).pipe(
+  update(userData: IUserRequest) {
+    return this._httpClient.put<IUpdateUserResponse>(`${this._url}`, userData).pipe(
       map((updateUserToken) => {
         localStorage.setItem('token', updateUserToken.token);
 
