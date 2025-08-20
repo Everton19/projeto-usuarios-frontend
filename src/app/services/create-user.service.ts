@@ -12,8 +12,10 @@ export class CreateUserService {
   private readonly _url = 'http://localhost:3000/create-user';
 
   create(userData: IUserRequest) {
+    const HEADERS = new HttpHeaders().set('useAuth', 'y');
+
     return this._httpClient
-      .post<ICreateUserResponse>(`${this._url}`, userData)
+      .post<ICreateUserResponse>(`${this._url}`, userData, { headers: HEADERS })
       .pipe(
         map((createUserResponse) => {
           return createUserResponse;
