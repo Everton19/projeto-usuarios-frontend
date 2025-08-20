@@ -5,6 +5,9 @@ export function authInterceptor(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> {
+  if (req.headers.get('useAuth') === 'n') {
+    return next(req);
+  }
 
   const NEW_REQUEST = req.clone({
     headers: req.headers.set(

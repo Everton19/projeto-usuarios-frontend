@@ -5,19 +5,23 @@ import { IUserRequest } from '../interfaces/user-request.interface';
 import { IUpdateUserResponse } from '../interfaces/update-user-response.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UpdateUserService {
   private readonly _httpClient = inject(HttpClient);
   private readonly _url = 'http://localhost:3000/update-user';
 
   update(userData: IUserRequest) {
-    return this._httpClient.put<IUpdateUserResponse>(`${this._url}`, userData).pipe(
-      map((updateUserToken) => {
-        localStorage.setItem('token', updateUserToken.token);
+    const HEADERS = new HttpHeaders().set('useAuth', 'y');
 
-        return updateUserToken;
-      })
-    );
+    return this._httpClient
+      .put<IUpdateUserResponse>(`${this._url}`, userData, { headers: HEADERS })
+      .pipe(
+        map((updateUserToken) => {
+          localStorage.setItem('token', updateUserToken.token);
+
+          return updateUserToken;
+        })
+      );
   }
 }
